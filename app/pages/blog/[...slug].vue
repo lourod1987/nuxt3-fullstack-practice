@@ -1,6 +1,6 @@
 <template>
-  <article v-if="data" class="prose dark:prose-invert">
-    <ContentRenderer :value="data" />
+  <article v-if="blog" class="prose dark:prose-invert">
+    <ContentRenderer :value="blog" />
   </article>
   <template v-else>
     <div class="empty-page">
@@ -14,7 +14,15 @@
 </template>
 
 <script setup>
-    const route = useRoute();
-    const { data } = await useAsyncData(() => queryCollection('blog').path(route.path).first());
-    console.log(`Route Path: ${route.path}`);
+  const route = useRoute();
+  const { data: blog } = await useAsyncData(() => queryCollection('blog').path(route.path).first());
+  console.log(`Route Path: ${route.path}`);
+
+  useSeoMeta({
+    title: blog._rawValue.title,
+    description: blog._rawValue.description,
+    ogTitle: blog._rawValue.meta.head.meta[4].content
+  });
+  console.log(`This is the data: ${JSON.stringify(blog)}`);
+  console.log(`DATA TITLE: ${blog._rawValue.title}`);
 </script>

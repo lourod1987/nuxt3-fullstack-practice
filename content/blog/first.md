@@ -1,3 +1,22 @@
+---
+title: 'TEST!!!'
+description: 'meta description of the page'
+head:
+  meta:
+    - name: 'keywords'
+      content: 'nuxt, vue, content'
+    - name: 'robots'
+      content: 'index, follow'
+    - name: 'author'
+      content: 'Luis R.'
+    - name: 'copyright'
+      content: '© 2025 Luis R.'
+    - name: 'og:title'
+      content: 'This is an OpenGraph title'
+---
+
+<!-- Content of the page -->
+# The Title is {{ $doc.title }} and the description is {{ $doc.description }}
 # First post on our website
 ## Introduction
 This is some text. *This is italic*.
